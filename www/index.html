@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" 
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="css/index.css" >
+
+        <title>First Application</title>
+    </head>
+    <body>
+
+        <div class="container-fluid">
+            <div class="row calculation-row">
+                <p id="calculation"></p>
+            </div>
+
+            <div class="row result-row">
+                <p id="result">0</p>
+            </div>
+
+            <div class="numberspad">
+                <div class="row numbersrow">
+                    <div class="col">
+                        <button type="button" class="btn btn-primary button-width" onclick="addText('1')">One</button>
+                    </div>
+
+                    <div class="col">
+                        <button type="button" class="btn btn-primary button-width" onclick="addText('2')">Two</button>
+                    </div>
+
+                    <div class="col">
+                        <button type="button" class="btn btn-primary button-width" onclick="addText('3')">Three</button>
+                    </div>
+                </div>
+
+                <div class="row numbersrow">
+                    <div class="col">
+                        <button type="button" class="btn btn-primary button-width" onclick="addText('4')">Four</button>
+                    </div>
+
+                    <div class="col">
+                        <button type="button" class="btn btn-primary button-width" onclick="addText('5')">Five</button>
+                    </div>
+
+                    <div class="col">
+                        <button type="button" class="btn btn-primary button-width" onclick="addText('6')">Six</button>
+                    </div>
+                </div>
+
+                <div class="row numbersrow">
+                    <div class="col">
+                        <button type="button" class="btn btn-primary button-width" onclick="addText('7')">Seven</button>
+                    </div>
+
+                    <div class="col">
+                        <button type="button" class="btn btn-primary button-width" onclick="addText('8')">Eight</button>
+                    </div>
+
+                    <div class="col">
+                        <button type="button" class="btn btn-primary button-width" onclick="addText('9')">Nine</button>
+                    </div>
+                </div>
+
+                <div class="row numbersrow">
+                    <div class="col">
+                        <button type="button" class="btn btn-primary button-width" onclick="addText('0')">Zero</button>
+                    </div>
+
+                    <div class="col">
+                        <button type="button" class="btn btn-primary button-width" onclick="addText(' + ')">Plus</button>
+                    </div>
+
+                    <div class="col">
+                        <button type="button" class="btn btn-primary button-width" onclick="addText('=')">Equal</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <script>
+            var lastPressed = " ";
+            function addText(num) {
+                if (lastPressed == " + " && num == " + "){
+                    document.getElementById("calculation").innerHTML = " ";
+                    document.getElementById("result").innerHTML = " ";
+                } else if (num == "=") {
+                    
+                    var calculation = document.getElementById("calculation").innerHTML.split(" + ")
+                    var result = 0;
+
+                    calculation.forEach(function(x) {
+                        result += parseInt(x, 10);    
+                    });
+
+                    document.getElementById("result").innerHTML = result;
+                } else {
+                    document.getElementById("calculation").innerHTML = document.getElementById("calculation").innerHTML + num;
+                    lastPressed = num;
+                }
+            }
+        </script>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+    </body>
+</html>
